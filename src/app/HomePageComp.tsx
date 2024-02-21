@@ -10,7 +10,7 @@ const HomePageComp = () => {
 
     const router = useRouter ()
   return (
-    <div>
+    <div className=''>
         <div className='flex flex-col gap-4 mb-4'>
             <div className="w-[200px] h-[200px] flex flex-col justify-center">
                 <Image

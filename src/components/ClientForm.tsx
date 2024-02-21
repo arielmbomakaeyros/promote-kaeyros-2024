@@ -87,7 +87,7 @@ const ClientForm = () => {
     return (
         <form className='flex flex-col gap-3' onSubmit={handleSubmit(onSubmit)}>
             <div>
-                <label htmlFor="">Nom et Prenom</label>
+                <label htmlFor="" className='text-black'>Nom et Prenom</label>
                 <input 
                     {...register("fullName", {
                         required: "Nom/Prenom Obligatoire", 
@@ -95,7 +95,7 @@ const ClientForm = () => {
                     type='text' 
                     placeholder='Entrer votre Nom et Prenom ici'
                     // errors={ errors?.office_id?.message }
-                    className='py-4 px-4 rounded-2xl text-black outline-none w-full'
+                    className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'
                 />
                 <p className='text-[.9rem]' style={{
                     color: "red"
@@ -105,14 +105,14 @@ const ClientForm = () => {
                 
             </div>
             <div>
-                <label htmlFor="">Email</label>
+                <label htmlFor="" className='text-black'>Email</label>
                 <input 
                     {...register("email", {
                         required: "Email Obligatoire", 
                     })}
                     type='text' 
                     placeholder='Entrex votre addresse email ici'
-                    className='py-4 px-4 rounded-2xl text-black outline-none w-full'
+                    className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'
                 />
                 <p className='text-[.9rem]' style={{
                     color: "red"
@@ -121,7 +121,7 @@ const ClientForm = () => {
                 </p>
             </div>
             <div>
-                <label htmlFor="">Phone Number</label>
+                <label htmlFor="" className='text-black'>Phone Number</label>
                 <input 
                     {...register("phoneNumber", {
                         required: "Contact", 
@@ -132,7 +132,7 @@ const ClientForm = () => {
                     })}
                     type='number' 
                     placeholder='Entrez votre contact ici'
-                    className='py-4 px-4 rounded-2xl text-black outline-none w-full'
+                    className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'
                 />
                 <p className='text-[.9rem]' style={{
                     color: "red"
@@ -141,24 +141,24 @@ const ClientForm = () => {
                 </p>
             </div>
             <div>
-                <label htmlFor="">Entreprise/Societe</label>
+                <label htmlFor="" className='text-black'>Entreprise/Societe</label>
                 <input 
                     {...register("companyName", {
                         required: "Entrez nom de votre compagnie", 
                     })}
                     type='text' 
                     placeholder='Nom et Prenom'
-                    className='py-4 px-4 rounded-2xl text-black outline-none w-full'
+                    className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'
                 />
             </div>
 
             <div>
-                <label htmlFor="">Service</label>
+                <label htmlFor="" className='text-black'>Service</label>
                 <select
                     {...register("interestingService", {
                         required: "Entrez nom du Produit que vous desirez", 
                     })}
-                className='py-4 px-4 rounded-2xl text-black outline-none w-full'>
+                className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'>
                     <option value="SEMA">SEMA</option>
                     <option value="PAYOUTLY">PAYOUTLY</option>
                     <option value="AIRO">AIRO</option>
