@@ -36,29 +36,31 @@ const ClientForm = () => {
             console.log("..........", result)
 
             if (result.ok) {
-                // router.refresh(); 
-                // router.push("/"); 
                 // console.log("it has passed the fetch")
                 alert("Merci pour votre souscripition")
+                setIsLoading(false);
+                router.refresh(); 
+                router.push("/"); 
             } else {
                 throw new Error("Problem pour enregistrer un user. ")
             }
         } catch (error) {
             console.log(error)
         }
+        reset()
 
-        setTimeout(() => {
-          setIsLoading(false);
-        //   toast.success('Successfully toasted!');
-        //   push('/');
-        }, 5000);
+        // setTimeout(() => {
+        //   setIsLoading(false);
+        // //   toast.success('Successfully toasted!');
+        // //   push('/');
+        // }, 5000);
     };
 
     const [ establishUser, setEstablishedUser ] = useState ()
 
     const getAllClients = async () => {
         try {
-            const users = await fetch(`https://promote-kaeyros-2024.vercel.app/api/save_client_info`, {
+            const users = await fetch(`/api/save_client_info`, {
                 cache: "no-store", 
                 // next: { revalidate: 10 }, 
             }); 
