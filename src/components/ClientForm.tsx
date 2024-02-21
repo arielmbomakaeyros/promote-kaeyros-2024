@@ -59,7 +59,7 @@ const ClientForm = () => {
     const getAllClients = async () => {
         try {
     
-            const users = await fetch(`http://localhost:3000/api/save_client_info`, {
+            const users = await fetch(`https://promote-kaeyros-2024.vercel.app/api/save_client_info`, {
                 cache: "no-store", 
                 // next: { revalidate: 10 }, 
             }); 
