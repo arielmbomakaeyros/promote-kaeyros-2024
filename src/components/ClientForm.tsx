@@ -3,7 +3,15 @@ import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ClientRegistrationFormValues } from './client-form/clientForm';
 import ThreeDotsLoadingAnimation from './loaders/TreeDotsLoading';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; 
+import { z } from "zod"; 
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const registerSchema = z.object({
+    fullName: z.string(), 
+    email: z.string().email(), 
+    phoneNumber: z.string().min(9, "Numero doit etre au moins 9 chiffres"), 
+})
 
 const ClientForm = () => {
 
@@ -15,7 +23,9 @@ const ClientForm = () => {
         formState: { errors, isSubmitting, isSubmitted}, 
         reset, 
         getValues, 
-    } = useForm<ClientRegistrationFormValues> (); 
+    } = useForm<ClientRegistrationFormValues> ({
+        resolver: zodResolver (registerSchema)
+    }); 
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -91,10 +101,11 @@ const ClientForm = () => {
             <div>
                 <label htmlFor="" className='text-black'>Nom et Prenom</label>
                 <input 
-                    {...register("fullName", {
-                        required: "Nom/Prenom Obligatoire", 
-                    })}
+                    {...register("fullName" )}
                     type='text' 
+                    // {
+                    //     required: "Nom/Prenom Obligatoire", 
+                    // }
                     placeholder='Entrer votre Nom et Prenom ici'
                     // errors={ errors?.office_id?.message }
                     className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'
@@ -109,9 +120,10 @@ const ClientForm = () => {
             <div>
                 <label htmlFor="" className='text-black'>Email</label>
                 <input 
-                    {...register("email", {
-                        required: "Email Obligatoire", 
-                    })}
+                    {...register("email" )}
+                    // {
+                    //     required: "Email Obligatoire", 
+                    // }
                     type='text' 
                     placeholder='Entrex votre addresse email ici'
                     className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'
@@ -125,13 +137,14 @@ const ClientForm = () => {
             <div>
                 <label htmlFor="" className='text-black'>Phone Number</label>
                 <input 
-                    {...register("phoneNumber", {
-                        required: "Contact", 
-                        minLength: {
-                            value: 9, 
-                            message: "Numero doit etre au moins 9 chiffres"
-                        }
-                    })}
+                    {...register("phoneNumber" )}
+                    // {
+                    //     required: "Contact", 
+                    //     minLength: {
+                    //         value: 9, 
+                    //         message: "Numero doit etre au moins 9 chiffres"
+                    //     }
+                    // }
                     type='number' 
                     placeholder='Entrez votre contact ici'
                     className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'
@@ -145,9 +158,10 @@ const ClientForm = () => {
             <div>
                 <label htmlFor="" className='text-black'>Entreprise/Societe</label>
                 <input 
-                    {...register("companyName", {
-                        required: "Entrez nom de votre compagnie", 
-                    })}
+                    {...register("companyName",)}
+                    // {
+                    //     required: "Entrez nom de votre compagnie", 
+                    // }
                     type='text' 
                     placeholder='Nom et Prenom'
                     className='py-4 px-4 rounded-2xl text-black border-[1px] border-gray outline-none w-full'
